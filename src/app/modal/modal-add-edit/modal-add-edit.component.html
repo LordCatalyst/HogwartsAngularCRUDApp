@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>{{ actionTitle }} Wizard Request</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formWizardRequest">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="wizardName" /> </mat-form-field
+      ></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="wizardLastName" /> </mat-form-field
+      ></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Muggle ID</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="wizardMuggleId"
+          /> </mat-form-field
+      ></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="wizardAge"
+          /> </mat-form-field
+      ></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
+            <mat-label>House you are aspiring to join</mat-label>
+            <mat-select formControlName="houseId">
+              <mat-option
+                *ngFor="let item of housesList"
+                [value]="item.houseId"
+              >
+                {{ item.houseName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-form-field></mat-grid-tile
+      >
+    </mat-grid-list>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button
+    mat-raised-button
+    mat-dialog-close
+    (click)="addEditWizardRequest()"
+    color="primary"
+    [disabled]="formWizardRequest.invalid"
+  >
+    {{ actionButton }}
+  </button>
+</div>
